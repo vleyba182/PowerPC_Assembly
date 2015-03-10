@@ -64,3 +64,26 @@ getstatus:
 	
 	addi r2, r2, 1 			#pointer needs to point one past 
 	mflr r1         		#stores return address
+
+get:	
+
+	lbzu r5, -1(r2) 		#r5 gets value of string
+	bl printnumber
+	cmpi 0,r5,0x0a 	 		#checks for nl character
+	bt 2, done	     		#program terminates
+	b get		
+
+done:	
+	mtlr r1		  		 	#resets link resgister
+	blr           			#branches back to start
+
+printnumber:	 
+      
+	lwz r12, STATREG(r15) 	#status reg to r12 
+	andi. r12, r12,4      	#AND r12 with 4   
+	bt 2, printnumber		#printnumber
+	stw r5, TXFIFO(R15)   	#outputs word in r12	
+	blr
+
+.org 0x2000
+.long 275
