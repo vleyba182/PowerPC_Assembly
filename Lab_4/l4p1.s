@@ -5,7 +5,7 @@
 #      Name: Vicente Leyba
 #
 #
-#      Laboratory Number: 4-2		   Due Date: 10/27/2011
+#      Laboratory Number: 4-1		   Due Date: 10/27/2011
 #
 #
 #
